@@ -4,7 +4,7 @@ import { useLocation } from 'react-router-dom';
 const PdfView = () => {
   const location = useLocation();
   const pdfUrl = location.state.pdfUrl;
-  const pdf = `https://quantum-backend-1.onrender.com/public/temp/${pdfUrl}#toolbar=0`
+  const pdf = `https://quantum-backend-1.onrender.com/public/temp/${pdfUrl}`
 
   return (
     <div>
