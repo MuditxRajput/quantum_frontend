@@ -11,7 +11,6 @@ const PdfView = () => {
   const location = useLocation();
   const storedPdfUrl = sessionStorage.getItem('pdfUrl');
   const [pdfUrl, setPdfUrl] = useState(storedPdfUrl);
-  console.log(pdfUrl);
   const [numPages, setNumPages] = useState(null);
   const isMobile = window.innerWidth <= 768; // Define mobile breakpoint
   const[time,setTime] = useState(10);
@@ -46,7 +45,7 @@ const PdfView = () => {
     return <div>Loading...</div>; // or any loading indicator
   }
 
-  const file = `https://quantum-backend-1.onrender.com/public/temp/${pdfUrl}`;
+  const file = `https://quantum-backend-1.onrender.com/public/temp/${encodeURIComponent(pdfUrl)}`;
   console.log(file);
 
   function onDocumentLoadSuccess({ numPages }) {
