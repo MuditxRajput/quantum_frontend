@@ -23,13 +23,19 @@ const PdfView = () => {
       sessionStorage.setItem('pdfUrl', pdfUrl);
     }
   }, [location.state]);
- useEffect(()=>{
-   const timer = setInterval(()=>{
-    setTime((pre)=>pre-1);
-   },1000)
-
-   return ()=>clearInterval(timer);
- },[])
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setTime((prev) => {
+        if (prev === 0) {
+          clearInterval(timer); // Stop the interval when time reaches 0
+        }
+        return prev > 0 ? prev - 1 : 0; // Ensure time does not become negative
+      });
+    }, 1000);
+  
+    return () => clearInterval(timer); // Cleanup function to clear interval on component unmount
+  }, []);
+  
  useEffect(()=>{
   if(time===0)
   {
