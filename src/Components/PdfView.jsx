@@ -40,7 +40,7 @@ const PdfView = () => {
     return <div>Loading...</div>; // or any loading indicator
   }
 
-  const file = `http://localhost:8000/public/temp/${pdfUrl}`;
+  const file = `https://quantum-backend-1.onrender.com/public/temp/${pdfUrl}`;
   console.log(file);
 
   function onDocumentLoadSuccess({ numPages }) {
